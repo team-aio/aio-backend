@@ -12,3 +12,5 @@
 |Remove|파일을 삭제하는 작업만 수행|
 |!HOTFIX|급하게 버그 수정|
 |!BREAKING CHANGE|버그를 고친 경우|
+
+출처 및 참고 : https://overcome-the-limits.tistory.com/6
