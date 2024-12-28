@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  aio-spring:
+    image: ${DOCKER_HUB_USERNAME}/aio-spring:latest
+    restart: always
+    container_name: aio-spring
+    ports:
+      - "8000:8000"
