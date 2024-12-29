@@ -21,6 +21,9 @@ class TestController {
         if (flag == -1) {
             throw ExampleHandler(ErrorStatus.BAD_REQUEST)
         }
+        if (flag == 0) {
+            throw IllegalArgumentException(ErrorStatus.INTERNAL_SERVER_ERROR.toString())
+        }
         return ApiResponse.onSuccess(TestResponseDTO.Test(flag.toString()))
     }
 }

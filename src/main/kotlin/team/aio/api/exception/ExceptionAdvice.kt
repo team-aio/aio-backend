@@ -36,6 +36,15 @@ class ExceptionAdvice : ResponseEntityExceptionHandler() {
         )
     }
 
+    @ExceptionHandler
+    fun globalException(ex: Exception, request: WebRequest): ResponseEntity<Any>? {
+        ex.printStackTrace()
+        val errorReason = ErrorStatus.INTERNAL_SERVER_ERROR.getReason()
+        val errorPoint = ApiResponse.onFailure(errorReason.code, errorReason.message, ex.message)
+
+        return toResponseEntity(ex, HttpHeaders.EMPTY, request, HttpStatus.INTERNAL_SERVER_ERROR, errorPoint)
+    }
+
     private fun handleExceptionInternalConstraint(
         ex: Exception, errorMessage: String, headers: HttpHeaders, request: WebRequest
     ): ResponseEntity<Any>? {
@@ -53,7 +62,7 @@ class ExceptionAdvice : ResponseEntityExceptionHandler() {
         headers: HttpHeaders,
         request: WebRequest,
         httpStatus: HttpStatus,
-        body: ApiResponse<*>
+        body: ApiResponse<*>,
     ): ResponseEntity<Any>? {
         return super.handleExceptionInternal(
             e,
