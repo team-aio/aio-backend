@@ -3,9 +3,5 @@ plugins {
 }
 rootProject.name = "aio"
 include("aio-app-api")
-include("application")
-include("module")
-include("aio-core-web-swagger")
-include("aio-core-swagger")
 include("aio-display-swagger")
 include("aio-core-web")
