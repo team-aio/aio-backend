@@ -5,11 +5,9 @@ bootJar.enabled = true
 
 dependencies {
     implementation(project(":aio-display-swagger"))
-    implementation(project(":aio-core-web"))
-    implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation(project(":aio-core-security"))
+    implementation(project(":aio-core-api-response"))
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
     runtimeOnly("com.h2database:h2")
     runtimeOnly("com.mysql:mysql-connector-j")
     annotationProcessor("org.projectlombok:lombok")
