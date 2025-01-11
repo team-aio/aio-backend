@@ -16,3 +16,13 @@
 
 출처 및 참고 : https://overcome-the-limits.tistory.com/6
 
+### 멀티 모듈 네이밍 규칙
+---
+
+|   태그 이름   |           네이밍 규칙            |
+|:---------:|:---------------------------:|
+| 애플리케이션 모듈 |         aio-app-xxx         |
+|  도메인 모듈   | aio-domain-인프라 이름(jpa,redis |
+|   내부 모듈   |      aio-core-xxx-xxx       |
+|   코어 모듈   |       aio-common-xxx        |
+|   독립 모듈   |     aio-xxx-xxx(정말 자율)      |
