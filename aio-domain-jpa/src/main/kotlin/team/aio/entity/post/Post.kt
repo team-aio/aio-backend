@@ -10,8 +10,6 @@ import team.aio.entity.BaseEntity
 import java.time.LocalDateTime
 
 @Entity
-@DynamicInsert
-@DynamicUpdate
 class Post(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

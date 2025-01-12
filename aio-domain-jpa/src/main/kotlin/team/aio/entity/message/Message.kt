@@ -9,8 +9,6 @@ import org.hibernate.annotations.DynamicUpdate
 import team.aio.entity.BaseEntity
 
 @Entity
-@DynamicInsert
-@DynamicUpdate
 class Message(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

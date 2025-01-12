@@ -6,8 +6,6 @@ import org.hibernate.annotations.DynamicUpdate
 import team.aio.entity.BaseEntity
 
 @Entity
-@DynamicInsert
-@DynamicUpdate
 class Member(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
