@@ -7,6 +7,7 @@ dependencies {
     implementation(project(":aio-display-swagger"))
     implementation(project(":aio-core-security"))
     implementation(project(":aio-core-api-response"))
+    implementation(project(":aio-domain-jpa"))
     implementation("org.springframework.boot:spring-boot-starter-web")
     runtimeOnly("com.h2database:h2")
     runtimeOnly("com.mysql:mysql-connector-j")
