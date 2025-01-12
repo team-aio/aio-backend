@@ -1,8 +1,6 @@
 package team.aio.entity.post
 
 import jakarta.persistence.*
-import org.hibernate.annotations.DynamicInsert
-import org.hibernate.annotations.DynamicUpdate
 import team.aio.entity.BaseEntity
 
 @Entity
