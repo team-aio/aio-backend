@@ -5,8 +5,9 @@ import org.hibernate.annotations.DynamicInsert
 import org.hibernate.annotations.DynamicUpdate
 import team.aio.entity.BaseEntity
 
+@Table(name = "likes")
 @Entity
-class Likes(
+class Like(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
