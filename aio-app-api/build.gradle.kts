@@ -3,6 +3,10 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 val bootJar: BootJar by tasks
 bootJar.enabled = true
 
+springBoot {
+    mainClass.set("team.aio.AioApplicationKt")
+}
+
 dependencies {
     implementation(project(":aio-display-swagger"))
     implementation(project(":aio-core-security"))
