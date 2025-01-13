@@ -1,6 +1,6 @@
 FROM eclipse-temurin:21 AS build
 WORKDIR /app
 COPY . /app
-RUN ./gradlew build
+RUN ./gradlew build --parallel
 CMD ["java", "-jar", "aio-app-api/build/libs/aio-app-api-0.0.1-SNAPSHOT.jar"]
 EXPOSE 8000
