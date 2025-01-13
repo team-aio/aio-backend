@@ -1,8 +1,8 @@
 version: '3.7'
 services:
-  aio-spring:
-    image: ${DOCKER_HUB_USERNAME}/aio-spring:latest
+  toasting-spring:
+    image: ${DOCKER_HUB_USERNAME}/toasting-spring:latest
     restart: always
-    container_name: aio-spring
+    container_name: toasting-spring
     ports:
       - "8000:8000"

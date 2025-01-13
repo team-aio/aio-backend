@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: toasting
+  profiles:
+    active: local
+
+server:
+  port: 8000
+  address: 0.0.0.0
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    tags-sorter: alpha
+    operations-sorter: alpha
+    display-request-duration: true
