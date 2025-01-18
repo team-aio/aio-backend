@@ -2,5 +2,5 @@ FROM eclipse-temurin:21 AS build
 WORKDIR /app
 COPY . /app
 RUN ./gradlew build
-CMD ["java", "-jar", "aio-app-api/build/libs/aio-app-api-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "toasting-app-api/build/libs/toasting-app-api-0.0.1-SNAPSHOT.jar"]
 EXPOSE 8000
