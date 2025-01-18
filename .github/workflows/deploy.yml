@@ -65,5 +65,6 @@ jobs:
             cd /home/toasting
             export DOCKER_HUB_USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}
             docker-compose down
+            docker-compose pull
             docker image prune -a -f
             docker-compose -f docker-compose.yml up --build -d
