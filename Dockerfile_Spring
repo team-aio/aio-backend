@@ -1,6 +1,6 @@
-FROM eclipse-temurin:21 AS build
+FROM eclipse-temurin:21-jre-alpine AS build
 WORKDIR /app
 COPY . /app
-RUN ./gradlew build
+RUN ./gradlew build --parallel
 CMD ["java", "-jar", "toasting-app-api/build/libs/toasting-app-api-0.0.1-SNAPSHOT.jar"]
 EXPOSE 8000
