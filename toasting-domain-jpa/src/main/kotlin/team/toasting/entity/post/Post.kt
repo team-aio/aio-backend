@@ -14,6 +14,7 @@ class Post(
     val id: Long? = null,
     val sourceType: String,
     val postedAt: LocalDateTime? = null,
+    val shortContent: String? = null,
     val content: String? = null,
     val title: String,
     val likeCount: Int = 0,
