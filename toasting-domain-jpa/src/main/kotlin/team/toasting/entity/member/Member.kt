@@ -14,7 +14,11 @@ class Member(
     val profilePicture: String? = null,
     val velogId: Long? = null,
     val tistoryId: Long? = null,
-    val nickname: String
+    val nickname: String,
+    val email: String,
+    @OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    @JoinColumn(name = "social_login_id")
+    val socialLogin: SocialLogin,
 ) : BaseEntity() {
 
 }
