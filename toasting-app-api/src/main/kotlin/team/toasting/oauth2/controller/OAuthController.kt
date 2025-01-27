@@ -8,9 +8,12 @@ import org.springframework.stereotype.Component
 import team.toasting.oauth2.dto.GoogleResponse
 import team.toasting.oauth2.dto.OAuth2Response
 import team.toasting.oauth2.dto.OAuth2UserDTO
+import team.toasting.service.member.MemberSocialLoginService
 
 @Component
-class OAuthController : DefaultOAuth2UserService() {
+class OAuthController(
+    private val memberSocialLoginService: MemberSocialLoginService,
+) : DefaultOAuth2UserService() {
     private val log = KotlinLogging.logger {}
 
     override fun loadUser(userRequest: OAuth2UserRequest?): OAuth2User? {
@@ -31,7 +34,13 @@ class OAuthController : DefaultOAuth2UserService() {
                 name = oAuth2Response.name,
                 email = oAuth2Response.email,
             )
-        log.info { oAuth2UserDTO }
+
+        memberSocialLoginService.upsertBy(
+            oAuth2Response.providerId,
+            oAuth2Response.provider,
+            oAuth2Response.name,
+            oAuth2Response.email,
+        )
         return oAuth2UserDTO
     }
 

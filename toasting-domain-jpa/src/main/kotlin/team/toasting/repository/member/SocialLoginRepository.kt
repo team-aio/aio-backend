@@ -6,4 +6,8 @@ import team.toasting.entity.member.SocialLogin
 
 @Repository
 interface SocialLoginRepository : JpaRepository<SocialLogin, Long> {
+    fun findByExternalIdAndAccessToken(
+        externalCode: String,
+        accessToken: String,
+    ): SocialLogin?
 }

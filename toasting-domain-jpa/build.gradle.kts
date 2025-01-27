@@ -11,6 +11,7 @@ plugins {
 }
 
 dependencies {
+    implementation("io.github.oshai:kotlin-logging-jvm:5.1.4")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -18,7 +19,6 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     annotationProcessor("org.projectlombok:lombok")
-
 }
 
 allOpen {
@@ -33,4 +33,4 @@ noArg {
     annotation("jakarta.persistence.Embeddable")
 }
 
-tasks.register("prepareKotlinBuildScriptModel"){}
+tasks.register("prepareKotlinBuildScriptModel") {}
