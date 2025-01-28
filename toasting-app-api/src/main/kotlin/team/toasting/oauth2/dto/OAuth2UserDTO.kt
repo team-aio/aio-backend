@@ -6,7 +6,6 @@ import org.springframework.security.oauth2.core.user.OAuth2User
 data class OAuth2UserDTO(
     private val role: String,
     private val memberId: Long,
-    private val email: String,
 ) : OAuth2User {
     override fun getName(): String = memberId.toString()
 
@@ -19,6 +18,4 @@ data class OAuth2UserDTO(
         )
         return collection
     }
-
-    fun getEmail(): String = email
 }

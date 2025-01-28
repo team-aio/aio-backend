@@ -41,7 +41,6 @@ class OAuthController(
             OAuth2UserDTO(
                 role = "ROLE_USER",
                 memberId = memberId,
-                email = oAuth2Response.email,
             )
 
         return oAuth2UserDTO
