@@ -6,6 +6,9 @@ spring:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:test
     username: sa
+
+  jwt:
+    secret: ThisIsTestDontUseThisOnProductService
   jpa:
     hibernate:
       ddl-auto: create-drop
@@ -22,7 +25,7 @@ spring:
           google:
             client-name: google
             client-id: 694693785172-m0i9kmlib8vuup30g6jnls8m50i55voq.apps.googleusercontent.com
-            client-secret: ${{ secrets.DC_HOST }}
+            client-secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
             redirect-uri: http://localhost:8000/login/oauth2/code/google
             authorization-grant-type: authorization_code
             scope:
