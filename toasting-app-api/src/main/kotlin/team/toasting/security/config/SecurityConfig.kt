@@ -5,11 +5,14 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.http.SessionCreationPolicy
+import org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.web.cors.CorsConfiguration
 import org.springframework.web.cors.CorsConfigurationSource
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource
+import team.toasting.JWTUtil
 import team.toasting.oauth2.controller.OAuthController
+import team.toasting.security.filter.JwtFilter
 import team.toasting.security.handler.CustomSuccessHandler
 
 @Configuration
@@ -17,6 +20,7 @@ import team.toasting.security.handler.CustomSuccessHandler
 class SecurityConfig(
     private val oAuthController: OAuthController,
     private val customSuccessHandler: CustomSuccessHandler,
+    private val jwtUtil: JWTUtil,
 ) {
     @Bean
     fun corsConfigSource(): CorsConfigurationSource {
@@ -47,6 +51,9 @@ class SecurityConfig(
                     .userInfoEndpoint { it.userService(oAuthController) }
                     .successHandler(customSuccessHandler)
             }.sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
+
+        http
+            .addFilterAfter(JwtFilter(jwtUtil), OAuth2LoginAuthenticationFilter::class.java)
 
         http.authorizeHttpRequests {
             it

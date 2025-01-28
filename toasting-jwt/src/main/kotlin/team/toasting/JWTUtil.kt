@@ -51,10 +51,12 @@ class JWTUtil(
         }.getOrNull()
 
     fun isExpired(token: String): Boolean =
-        JWT
-            .require(Algorithm.HMAC256(secret))
-            .build()
-            .verify(token)
-            .expiresAt
-            .before(Date(System.currentTimeMillis()))
+        runCatching {
+            JWT
+                .require(Algorithm.HMAC256(secret))
+                .build()
+                .verify(token)
+                .expiresAt
+                .before(Date(System.currentTimeMillis()))
+        }.getOrDefault(false)
 }

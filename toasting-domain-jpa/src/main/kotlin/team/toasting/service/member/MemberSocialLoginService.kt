@@ -2,6 +2,7 @@ package team.toasting.service.member
 
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import team.toasting.entity.member.Member
 import team.toasting.entity.member.SocialLogin
 import team.toasting.repository.member.MemberRepository
@@ -14,6 +15,7 @@ class MemberSocialLoginService(
 ) {
     private val log = KotlinLogging.logger {}
 
+    @Transactional
     fun upsertMemberBy(
         socialCode: String,
         externalId: String,
