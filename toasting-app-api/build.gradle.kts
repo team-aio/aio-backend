@@ -11,6 +11,7 @@ dependencies {
     implementation(project(":toasting-display-swagger"))
     implementation(project(":toasting-core-api-response"))
     implementation(project(":toasting-domain-jpa"))
+    implementation(project(":toasting-jwt"))
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-oauth2-client")

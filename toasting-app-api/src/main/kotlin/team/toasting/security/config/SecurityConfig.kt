@@ -10,11 +10,13 @@ import org.springframework.web.cors.CorsConfiguration
 import org.springframework.web.cors.CorsConfigurationSource
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 import team.toasting.oauth2.controller.OAuthController
+import team.toasting.security.handler.CustomSuccessHandler
 
 @Configuration
 @EnableWebSecurity
 class SecurityConfig(
     private val oAuthController: OAuthController,
+    private val customSuccessHandler: CustomSuccessHandler,
 ) {
     @Bean
     fun corsConfigSource(): CorsConfigurationSource {
@@ -43,6 +45,7 @@ class SecurityConfig(
             .oauth2Login { oAuth2 ->
                 oAuth2
                     .userInfoEndpoint { it.userService(oAuthController) }
+                    .successHandler(customSuccessHandler)
             }.sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
 
         http.authorizeHttpRequests {
