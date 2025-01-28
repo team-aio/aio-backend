@@ -2,7 +2,7 @@ package team.toasting.controller.dto
 
 import java.time.LocalDateTime
 
-data class SearchPostsResponse(
+class SearchPostsResponse(
     val id: Long,
     val title: String,
     val content: String,
