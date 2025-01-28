@@ -1,3 +1,5 @@
+package team.toasting
+
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
 import io.github.oshai.kotlinlogging.KotlinLogging
@@ -7,7 +9,7 @@ import java.util.Date
 
 @Component
 class JWTUtil(
-    @Value("\${spring.jwt.secret}") val secret: String,
+    @Value("\${spring.jwt.secret}") private val secret: String,
 ) {
     private val log = KotlinLogging.logger {}
 
