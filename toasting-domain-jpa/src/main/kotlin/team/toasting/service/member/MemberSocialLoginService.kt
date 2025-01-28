@@ -14,43 +14,48 @@ class MemberSocialLoginService(
 ) {
     private val log = KotlinLogging.logger {}
 
-    fun upsertBy(
+    fun upsertMemberBy(
+        socialCode: String,
         externalId: String,
         accessToken: String,
         nickname: String,
         email: String,
-    ): Long? {
+    ): Long {
         val socialLogin = socialLoginRepository.findByExternalIdAndAccessToken(externalId, accessToken)
 
         if (socialLogin == null) {
-            return createNewMember(externalId, accessToken, nickname, email).id!!
+            val newMember = createNewMember(nickname, email)
+            createNewSocialLogin(newMember, socialCode, externalId, accessToken)
+            return newMember.id!!
         }
 
-        return updateMember(socialLogin, nickname, email)?.id!!
+        return updateMember(socialLogin, nickname, email).id!!
+    }
+
+    private fun createNewMember(
+        nickname: String,
+        email: String,
+    ): Member {
+        val newMember = Member.defaultMember(nickname, email)
+        return memberRepository.save(newMember)
+    }
+
+    private fun createNewSocialLogin(
+        member: Member,
+        socialCode: String,
+        externalId: String,
+        accessToken: String,
+    ) {
+        val socialLogin = SocialLogin(socialCode, externalId, accessToken, member)
+        socialLoginRepository.save(socialLogin)
     }
 
     private fun updateMember(
         socialLogin: SocialLogin,
         nickname: String,
         email: String,
-    ): Member? {
-        val member = memberRepository.findBySocialLogin(socialLogin)
-        return member?.updateWith(nickname, email)
-    }
-
-    private fun createNewMember(
-        externalId: String,
-        accessToken: String,
-        nickname: String,
-        email: String,
     ): Member {
-        val socialLogin = SocialLogin(id = null, "0", externalId, accessToken)
-        return memberRepository.save(
-            Member.defaultMember(
-                nickname,
-                email,
-                socialLogin,
-            ),
-        )
+        val updatedMember = socialLogin.member.updateWith(nickname, email)
+        return memberRepository.save(updatedMember)
     }
 }

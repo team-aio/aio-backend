@@ -1,6 +1,9 @@
 package team.toasting.entity.member
 
-import jakarta.persistence.*
+import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
+import jakarta.persistence.Id
 import team.toasting.entity.BaseEntity
 
 @Entity
@@ -13,19 +16,14 @@ class Member(
     val tistoryId: Long? = null,
     val nickname: String,
     val email: String,
-    @OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
-    @JoinColumn(name = "social_login_id")
-    val socialLogin: SocialLogin,
 ) : BaseEntity() {
     companion object {
         fun defaultMember(
             nickname: String,
             email: String,
-            socialLogin: SocialLogin,
         ) = Member(
             nickname = nickname,
             email = email,
-            socialLogin = socialLogin,
         )
     }
 
@@ -40,6 +38,5 @@ class Member(
             tistoryId = tistoryId,
             nickname = nickname,
             email = email,
-            socialLogin = socialLogin,
         )
 }
