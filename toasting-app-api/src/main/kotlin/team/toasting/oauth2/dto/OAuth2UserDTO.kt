@@ -5,10 +5,10 @@ import org.springframework.security.oauth2.core.user.OAuth2User
 
 data class OAuth2UserDTO(
     private val role: String,
-    private val name: String,
+    private val memberId: Long,
     private val email: String,
 ) : OAuth2User {
-    override fun getName(): String = name
+    override fun getName(): String = memberId.toString()
 
     override fun getAttributes(): Map<String, Any> = emptyMap<String, Any>()
 

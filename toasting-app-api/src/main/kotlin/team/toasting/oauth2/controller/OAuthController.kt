@@ -28,19 +28,22 @@ class OAuthController(
                     return null
                 }
 
+        val memberId =
+            memberSocialLoginService.upsertMemberBy(
+                "0",
+                oAuth2Response.providerId,
+                oAuth2Response.provider,
+                oAuth2Response.name,
+                oAuth2Response.email,
+            )
+
         val oAuth2UserDTO =
             OAuth2UserDTO(
                 role = "ROLE_USER",
-                name = oAuth2Response.name,
+                memberId = memberId,
                 email = oAuth2Response.email,
             )
 
-        memberSocialLoginService.upsertBy(
-            oAuth2Response.providerId,
-            oAuth2Response.provider,
-            oAuth2Response.name,
-            oAuth2Response.email,
-        )
         return oAuth2UserDTO
     }
 
