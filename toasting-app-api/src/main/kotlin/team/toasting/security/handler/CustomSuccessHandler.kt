@@ -20,15 +20,15 @@ class CustomSuccessHandler(
     ) {
         if (authentication == null) return
 
-        val username = authentication.parseUsername()
+        val memberId = authentication.parseMemberId()
         val role = authentication.parseRole()
 
-        val token = jwtUtil.createJwt(username, role, 60 * 60 * 60)
+        val token = jwtUtil.createJwt(memberId, role, 60 * 60 * 60)
         response.addCookie(createCookie("Authorization", token))
         response.sendRedirect("http://localhost:3000/")
     }
 
-    private fun Authentication.parseUsername() = (this.principal as OAuth2UserDTO).name
+    private fun Authentication.parseMemberId() = (this.principal as OAuth2UserDTO).name
 
     private fun Authentication.parseRole(): String =
         this.authorities

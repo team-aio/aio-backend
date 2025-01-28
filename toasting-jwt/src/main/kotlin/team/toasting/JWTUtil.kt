@@ -20,7 +20,7 @@ class JWTUtil(
     ): String =
         JWT
             .create()
-            .withClaim("username", username)
+            .withClaim("memberId", username)
             .withClaim("role", role)
             .withExpiresAt(Date(System.currentTimeMillis() + expiredMs))
             .withIssuedAt(Date(System.currentTimeMillis()))
@@ -38,15 +38,23 @@ class JWTUtil(
             log.warn { "Token verification failed: ${it.message}" }
         }.getOrNull()
 
-    fun getUsername(token: String): String? =
+    fun getMemberId(token: String): String? =
         runCatching {
             JWT
                 .require(Algorithm.HMAC256(secret))
                 .build()
                 .verify(token)
-                .getClaim("username")
+                .getClaim("memberId")
                 .asString()
         }.onFailure {
             log.warn { "Token verification failed: ${it.message}" }
         }.getOrNull()
+
+    fun isExpired(token: String): Boolean =
+        JWT
+            .require(Algorithm.HMAC256(secret))
+            .build()
+            .verify(token)
+            .expiresAt
+            .before(Date(System.currentTimeMillis()))
 }
