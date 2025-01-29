@@ -24,17 +24,23 @@ class MessageController {
     }
 
     @PostMapping
-    fun sendMessage(@RequestBody @Valid request: SendMessageRequest): ApiResponse<SendMessageResponse> {
+    fun sendMessage(
+        @RequestBody @Valid request: SendMessageRequest
+    ): ApiResponse<SendMessageResponse> {
         return ApiResponse.onSuccess(SendMessageResponse.mock())
     }
 
     @GetMapping
-    fun getMessages(@PageableDefault(page = 0, size = 10) pageable: Pageable): ApiResponse<GetMessagesResponse> {
+    fun getMessages(
+        @PageableDefault(page = 0, size = 10) pageable: Pageable
+    ): ApiResponse<GetMessagesResponse> {
         return ApiResponse.onSuccess(GetMessagesResponse.mock())
     }
 
     @PutMapping("/partner/{partnerId}")
-    fun readAllMessage(@PathVariable partnerId: Long): ApiResponse<Void> {
+    fun readAllMessage(
+        @PathVariable partnerId: Long
+    ): ApiResponse<Void> {
         return ApiResponse.onSuccess(null)
     }
 }

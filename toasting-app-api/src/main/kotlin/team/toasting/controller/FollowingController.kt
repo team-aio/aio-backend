@@ -13,12 +13,16 @@ import team.toasting.controller.dto.response.*
 class FollowingController {
 
     @GetMapping("/{followingId}/exists")
-    fun existsFollowing(@PathVariable followingId: Long): ApiResponse<ExistsFollowingResponse> {
+    fun existsFollowing(
+        @PathVariable followingId: Long
+    ): ApiResponse<ExistsFollowingResponse> {
         return ApiResponse.onSuccess(ExistsFollowingResponse.mock())
     }
 
     @PostMapping("/{followingId}")
-    fun following(@PathVariable followingId: Long): ApiResponse<Void> {
+    fun following(
+        @PathVariable followingId: Long
+    ): ApiResponse<Void> {
         return ApiResponse.onSuccess(null);
     }
 }
