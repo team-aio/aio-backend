@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import team.toasting.api.ApiResponse
+import team.toasting.api.PageResponse
 import team.toasting.controller.dto.request.*
 import team.toasting.controller.dto.response.*
 
@@ -33,8 +34,9 @@ class MessageController {
     @GetMapping
     fun getMessages(
         @PageableDefault(page = 0, size = 10) pageable: Pageable
-    ): ApiResponse<GetMessagesResponse> {
-        return ApiResponse.onSuccess(GetMessagesResponse.mock())
+    ): ApiResponse<PageResponse<GetMessagesResponse>> {
+        val content = List(10) { GetMessagesResponse.mock() }
+        return ApiResponse.onSuccess(PageResponse.of(content, 10, 100))
     }
 
     @PutMapping("/partner/{partnerId}")
