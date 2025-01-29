@@ -2,7 +2,7 @@ package team.toasting.controller.dto.response
 
 import java.time.LocalDateTime
 
-class SendMessageResponse (
+class SendMessageResponseDTO (
     val id: Long,
     val postId: Long ?,
     val receiverId: Long,
@@ -10,7 +10,7 @@ class SendMessageResponse (
     val createdAt: LocalDateTime
 ) {
     companion object {
-        fun mock() = SendMessageResponse(
+        fun mock() = SendMessageResponseDTO(
             id = 1L,
             postId = 2L,
             receiverId = 3L,

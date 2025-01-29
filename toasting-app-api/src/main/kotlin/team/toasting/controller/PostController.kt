@@ -17,8 +17,8 @@ internal class PostController {
     @GetMapping("/search")
     fun searchPosts(
         @PageableDefault(page = 0, size = 10, sort = arrayOf("postedAt"), direction = Sort.Direction.DESC) pageable: Pageable
-    ): ApiResponse<PageResponse<SearchPostsResponse>> {
-        val content = List(10) { SearchPostsResponse.mock() }
+    ): ApiResponse<PageResponse<SearchPostsResponseDTO>> {
+        val content = List(10) { SearchPostsResponseDTO.mock() }
         return ApiResponse.onSuccess(PageResponse.of(content, 10, 100))
     }
 }

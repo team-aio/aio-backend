@@ -2,7 +2,7 @@ package team.toasting.controller.dto.response
 
 import java.time.LocalDateTime
 
-class SearchPostsResponse(
+class SearchPostsResponseDTO(
     val id: Long,
     val title: String,
     val content: String,
@@ -12,7 +12,7 @@ class SearchPostsResponse(
     val memberInfo: MemberInfo
 ) {
     companion object {
-        fun mock() = SearchPostsResponse(
+        fun mock() = SearchPostsResponseDTO(
             id = 1L,
             title = "mock title",
             content = "mock short content mock short content mock short content mock short content mock short content " +

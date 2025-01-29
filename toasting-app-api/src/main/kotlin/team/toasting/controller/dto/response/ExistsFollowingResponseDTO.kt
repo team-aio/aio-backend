@@ -1,10 +1,10 @@
 package team.toasting.controller.dto.response
 
-class ExistsFollowingResponse(
+class ExistsFollowingResponseDTO(
     val isExists: Boolean
 ) {
     companion object {
-        fun mock() = ExistsFollowingResponse(
+        fun mock() = ExistsFollowingResponseDTO(
             isExists = false
         )
     }

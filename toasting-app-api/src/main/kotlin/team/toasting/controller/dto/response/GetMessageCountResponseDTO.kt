@@ -1,10 +1,10 @@
 package team.toasting.controller.dto.response
 
-class GetMessageCountResponse(
+class GetMessageCountResponseDTO(
     val count: Int
 ){
     companion object {
-        fun mock() = GetMessageCountResponse(
+        fun mock() = GetMessageCountResponseDTO(
             count = 10
         )
     }

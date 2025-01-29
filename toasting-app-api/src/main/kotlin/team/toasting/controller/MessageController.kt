@@ -20,22 +20,22 @@ import team.toasting.controller.dto.response.*
 class MessageController {
 
     @GetMapping("/count")
-    fun getMessageCount(): ApiResponse<GetMessageCountResponse> {
-        return ApiResponse.onSuccess(GetMessageCountResponse.mock())
+    fun getMessageCount(): ApiResponse<GetMessageCountResponseDTO> {
+        return ApiResponse.onSuccess(GetMessageCountResponseDTO.mock())
     }
 
     @PostMapping
     fun sendMessage(
-        @RequestBody @Valid request: SendMessageRequest
-    ): ApiResponse<SendMessageResponse> {
-        return ApiResponse.onSuccess(SendMessageResponse.mock())
+        @RequestBody @Valid request: SendMessageRequestDTO
+    ): ApiResponse<SendMessageResponseDTO> {
+        return ApiResponse.onSuccess(SendMessageResponseDTO.mock())
     }
 
     @GetMapping
     fun getMessages(
         @PageableDefault(page = 0, size = 10) pageable: Pageable
-    ): ApiResponse<PageResponse<GetMessagesResponse>> {
-        val content = List(10) { GetMessagesResponse.mock() }
+    ): ApiResponse<PageResponse<GetMessagesResponseDTO>> {
+        val content = List(10) { GetMessagesResponseDTO.mock() }
         return ApiResponse.onSuccess(PageResponse.of(content, 10, 100))
     }
 

@@ -3,7 +3,7 @@ package team.toasting.controller.dto.response
 import java.time.LocalDateTime
 import kotlin.random.Random
 
-class GetMessagesResponse(
+class GetMessagesResponseDTO(
     val memberId: Long,
     val profilePicture: String ?,
     val lastMessageContent: String,
@@ -11,7 +11,7 @@ class GetMessagesResponse(
     val notReadMessageCount: Int
 ) {
     companion object {
-        fun mock() = GetMessagesResponse(
+        fun mock() = GetMessagesResponseDTO(
             Random.nextLong(1, 10),
             "st",
             "last message content",

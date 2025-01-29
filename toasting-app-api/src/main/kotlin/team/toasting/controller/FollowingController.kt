@@ -15,8 +15,8 @@ class FollowingController {
     @GetMapping("/{followingId}/exists")
     fun existsFollowing(
         @PathVariable followingId: Long
-    ): ApiResponse<ExistsFollowingResponse> {
-        return ApiResponse.onSuccess(ExistsFollowingResponse.mock())
+    ): ApiResponse<ExistsFollowingResponseDTO> {
+        return ApiResponse.onSuccess(ExistsFollowingResponseDTO.mock())
     }
 
     @PostMapping("/{followingId}")
