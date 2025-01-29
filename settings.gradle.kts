@@ -5,6 +5,6 @@ rootProject.name = "toasting"
 
 include("toasting-app-api")
 include("toasting-display-swagger")
-include("toasting-core-security")
 include("toasting-core-api-response")
 include("toasting-domain-jpa")
+include("toasting-jwt")

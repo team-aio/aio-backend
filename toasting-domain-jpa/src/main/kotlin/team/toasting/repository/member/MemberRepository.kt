@@ -5,5 +5,4 @@ import org.springframework.stereotype.Repository
 import team.toasting.entity.member.Member
 
 @Repository
-interface MemberRepository : JpaRepository<Member, Long> {
-}
+interface MemberRepository : JpaRepository<Member, Long>

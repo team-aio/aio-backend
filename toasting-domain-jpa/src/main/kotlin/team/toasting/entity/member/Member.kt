@@ -14,7 +14,29 @@ class Member(
     val profilePicture: String? = null,
     val velogId: Long? = null,
     val tistoryId: Long? = null,
-    val nickname: String
+    val nickname: String,
+    val email: String,
 ) : BaseEntity() {
+    companion object {
+        fun defaultMember(
+            nickname: String,
+            email: String,
+        ) = Member(
+            nickname = nickname,
+            email = email,
+        )
+    }
 
+    fun updateWith(
+        nickname: String,
+        email: String,
+    ): Member =
+        Member(
+            id = id,
+            profilePicture = profilePicture,
+            velogId = velogId,
+            tistoryId = tistoryId,
+            nickname = nickname,
+            email = email,
+        )
 }
