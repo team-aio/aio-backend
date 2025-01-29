@@ -1,4 +1,4 @@
-package team.toasting.controller.dto
+package team.toasting.controller.dto.response
 
 import java.time.LocalDateTime
 

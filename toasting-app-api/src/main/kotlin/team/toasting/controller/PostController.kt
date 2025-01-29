@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import team.toasting.api.ApiResponse
-import team.toasting.controller.dto.SearchPostsResponse
+import team.toasting.controller.dto.response.*
 
 @RestController
 @RequestMapping("/v1/posts")
