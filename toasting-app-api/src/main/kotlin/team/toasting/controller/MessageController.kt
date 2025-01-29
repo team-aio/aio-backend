@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import team.toasting.api.ApiResponse
-import team.toasting.controller.dto.GetMessageCountResponse
-import team.toasting.controller.dto.SendMessageResponse
+import team.toasting.controller.dto.request.*
+import team.toasting.controller.dto.response.*
 
 @RestController
 @RequestMapping("/v1/messages")
