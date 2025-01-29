@@ -1,0 +1,13 @@
+package team.toasting.controller.dto.request
+
+import jakarta.validation.constraints.NotBlank
+import jakarta.validation.constraints.NotNull
+
+data class SendMessageRequestDTO(
+    @field:NotNull(message = "receiverId cannot be null")
+    val receiverId: Long,
+    val postId: Long ?,
+    @field:NotBlank(message = "content cannot be null or empty")
+    val content: String
+) {
+}
